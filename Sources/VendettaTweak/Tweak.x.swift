@@ -61,7 +61,7 @@ class LoadHook: ClassHook<RCTCxxBridge> {
       vendettaUrl = loaderConfig.customLoadUrl.url
     } else {
       vendettaUrl = URL(
-        string: "https://cdn.jsdelivr.net/gh/revenge-mod/builds@main/revenge.js")!
+        string: "https://raw.githubusercontent.com/pyoncord/detta-builds/main/bunny.js")!
     }
 
     os_log("Fetching vendetta.js", log: vendettaLog, type: .info)
