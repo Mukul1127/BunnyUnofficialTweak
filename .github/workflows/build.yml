@@ -11,8 +11,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4.1.1
-        with:
-          submodules: true
 
       - name: Check cache
         run: |
@@ -34,19 +32,17 @@ jobs:
 
       - name: Build rootful package
         run: |
-          rm -f packages/*
           gmake -j$(sysctl -n hw.ncpu) clean package FINALPACKAGE=1
+
+      - name: Build rootless package
+        run: |
+          gmake -j$(sysctl -n hw.ncpu) clean package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
 
       - name: Upload rootful package
         uses: actions/upload-artifact@v4.3.1
         with:
           name: "Rootful Package"
           path: ${{ github.workspace }}/packages/*-arm.deb
-
-      - name: Build rootless package
-        run: |
-          rm -f packages/*
-          gmake -j$(sysctl -n hw.ncpu) clean package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
 
       - name: Upload rootless package
         uses: actions/upload-artifact@v4.3.1
