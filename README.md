@@ -1,3 +1,7 @@
+# NO GUARANTEE IT WORKS
+
+<br />
+
 # BunnyUnofficialTweak
 
 A rootful/rootless tweak to inject Bunny into Discord.
